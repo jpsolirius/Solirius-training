@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from blog.models import Post, Comment
 from projects.models import Project
 
 def project_index(request):
