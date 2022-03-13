@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block page_content %} 
+<br>
+<h2>Register</h2>
+
+<form method="post">
+    {% csrf_token %} 
+   <!-- <input type="text" name="first_name" placeholder="First Name"><br>
+   <input type="text" name="last_name" placeholder="Last Name"><br>
+   <input type="text" name="username" placeholder="Username"><br>
+   <input type="text" name="password1" placeholder="Password"><br>
+   <input type="text" name="password2" placeholder="Confirm Password"><br>
+   <input type="text" name="email" placeholder="Email"><br> -->
+    <br>
+   <div class="mb-3">
+        <label for="first_name" class="form-label">First Name</label>
+        <input type="text" class="form-control" name="first_name">
+    </div>
+    
+    <div class="mb-3">
+        <label for="last_name" class="form-label">Last Name</label>
+        <input type="text" class="form-control" name="last_name">
+    </div>
+
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" name="username">
+    </div>
+        
+    <div class="mb-3">
+        <label for="password1" class="form-label">Password</label>
+        <input type="text" class="form-control" name="password1">
+    </div>
+
+    <div class="mb-3">
+        <label for="password2" class="form-label">Confirm Password</label>
+        <input type="text" class="form-control" name="password2">
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" class="form-control" name="email">
+    </div>
+
+   <button class="btn btn-info" type="submit">Register</button>
+</form>
+
+<a href="{% url 'dashboard' %}">Back to dashboard</a>
+
+<div>
+    {% for message in message %}
+    <h3> {{message}} </h3>
+    {% endfor %}
+</div>
+{% endblock %}
