@@ -1,5 +1,4 @@
 from django.shortcuts import render
-
 from blog.forms import CommentForm
 from blog.models import Post, Comment
 
@@ -26,7 +25,6 @@ def blog_category(request, category):
 
 def blog_detail(request, pk):
     post = Post.objects.get(pk=pk)
-
     form = CommentForm()
     if request.method == 'POST':
         form = CommentForm(request.POST)

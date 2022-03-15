@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet"  href="{%  static  'css/file-upload.css'  %}">
+<h1>Add Blog Post</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-outline mb-4">
+        <input type="title" name="title" class="form-control form-control-lg"
+          placeholder="Title"/>
+        <label class="form-label" for="title"></label>
+    </div>
+    <div class="form-outline mb-4">
+        <input type="description" name="description" class="form-control form-control-lg"
+          placeholder="Description"/>
+        <label class="form-label" for="description"></label>
+    </div>
+    <div class="form-outline mb-4">
+        <input type="technology" name="technology" class="form-control form-control-lg"
+          placeholder="Technology"/>
+        <label class="form-label" for="technology"></label>
+    </div>
+<div class="fileUpload btn btn-primary">
+    <span>Upload Image</span>
+    <input type="file" name="image" class="upload" />
+</div>
+    <br>
+    <br>
+    <button type="submit" class="btn btn-info btn-lg" value="Submit">Submit</button>
+    </form>
+
+{% endblock %}

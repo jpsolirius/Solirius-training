@@ -13,8 +13,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('dashboard')
-            
+            return redirect('dashboard')      
         else:
             messages.success(request, ('There was an error logging in'))
             return redirect('login')
@@ -26,19 +25,6 @@ def logout_user(request):
     messages.success(request, 'You have been logged out.')
     return redirect('dashboard')
  
-
-""" def signup(request):
-    if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, 'Account created')
-            return redirect('dashboard')
-    else:
-        form = UserRegisterForm()
-    return render(request, 'registration/signup.html', {'form': form}) """
-
 def signup(request):
     if request.method == 'POST':
         first_name = request.POST['first_name']
