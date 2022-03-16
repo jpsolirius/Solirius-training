@@ -1,51 +1,69 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 {% extends 'base.html' %}
 {% block page_content %} 
+
 <br>
-<h2>Register</h2>
-
-<form method="post">
-    {% csrf_token %} 
-    <br>
-    <div class="form-outline mb-4">
-        <input type="first_name" name="first_name" class="form-control form-control-lg"
-          placeholder="First Name" />
-        <label class="form-label" for="first_name"></label>
-    </div>
-    
-    <div class="form-outline mb-4">
-        <input type="last_name" name="last_name" class="form-control form-control-lg"
-          placeholder="Last Name" />
-        <label class="form-label" for="last_name"></label>
-    </div>
-
-    <div class="form-outline mb-4">
-        <input type="username" name="username" class="form-control form-control-lg"
-          placeholder="Username" />
-        <label class="form-label" for="username"></label>
-    </div>
-
-    <div class="form-outline mb-4">
-        <input type="email" name="email" class="form-control form-control-lg"
-          placeholder="Email" />
-        <label class="form-label" for="email"></label>
-    </div>
-        
-    <div class="form-outline mb-4">
-        <input type="password1" name="password1" class="form-control form-control-lg"
-          placeholder="Password" />
-        <label class="form-label" for="password1"></label>
-    </div>
-
-    <div class="form-outline mb-4">
-        <input type="password2" name="password2" class="form-control form-control-lg"
-          placeholder="Confirm Password" />
-        <label class="form-label" for="password2"></label>
-    </div>
-
-   <button type="submit" class="btn btn-info btn-lg" value="Register">Register</button>
-</form>
-
-<a href="{% url 'dashboard' %}">Back to dashboard</a>
+<div class="container h-100">
+  <div class="row justify-content-md-center h-100">
+    <div class="card-wrapper">
+      <div class="card fat">
+        <div class="card-body">
+          <h4 class="card-title">Sign Up <i class="fa fa-users"></i></h4>
+          <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="first_name">First Name</label>
+              <input id="first_name" type="first_name" class="form-control" name="first_name" required autofocus>
+              <div class="invalid-feedback">
+                What's your first name?
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="last_name">Last Name</label>
+              <input id="last_name" type="last_name" class="form-control" name="last_name" required autofocus>
+              <div class="invalid-feedback">
+                What's your last name?
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input id="username" type="username" class="form-control" name="username" required autofocus>
+              <div class="invalid-feedback">
+                Your username is invalid
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email </label>
+              <input id="email" type="email" class="form-control" name="email" required>
+              <div class="invalid-feedback">
+                Your email is invalid
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password1">Password</label>
+              <input id="password1" type="password1" class="form-control" name="password1" required data-eye>
+              <div class="invalid-feedback">
+                Password is required
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password2">Confirm Password</label>
+              <input id="password2" type="password" class="form-control" name="password2" required data-eye>
+              <div class="invalid-feedback">
+                Please confirm your password
+              </div>
+            </div>
+            <div class="form-group m-0">
+              <button type="submit" class="btn btn-primary btn-block">
+                Sign Up
+              </button>
+            </div>
+            <div class="mt-4 text-center">
+              Already have an account? <a href="{% url 'login' %}">Sign In</a>
+            </div>
+          </form>
+        </div>
+      </div>
 
 {% endblock %}
 

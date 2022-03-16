@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_content %} 
+
+<div class="container p-3 my-3 bg-info text-white">
+    <h5 style="color:whitesmoke">You have successfully logged out. </h5>
+    <a style="color: white" href="{% url 'login' %}">Log back in?</a>
+</div>
+
+{% endblock %}
+

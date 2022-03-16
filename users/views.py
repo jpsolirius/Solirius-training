@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
+from django.template import loader
+from django.http import HttpResponse
 
 def dashboard(request):
     return render(request, 'users/dashboard.html')
@@ -23,7 +25,8 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     messages.success(request, 'You have been logged out.')
-    return redirect('dashboard')
+    response_body = loader.get_template('registration/signout_user.html').render()
+    return HttpResponse(response_body)
  
 def signup(request):
     if request.method == 'POST':

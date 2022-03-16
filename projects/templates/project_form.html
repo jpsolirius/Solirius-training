@@ -3,32 +3,54 @@
 {% block page_content %}
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet"  href="{%  static  'css/file-upload.css'  %}">
-<h1>Add Blog Post</h1>
 
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="form-outline mb-4">
-        <input type="title" name="title" class="form-control form-control-lg"
-          placeholder="Title"/>
-        <label class="form-label" for="title"></label>
-    </div>
-    <div class="form-outline mb-4">
-        <input type="description" name="description" class="form-control form-control-lg"
-          placeholder="Description"/>
-        <label class="form-label" for="description"></label>
-    </div>
-    <div class="form-outline mb-4">
-        <input type="technology" name="technology" class="form-control form-control-lg"
-          placeholder="Technology"/>
-        <label class="form-label" for="technology"></label>
-    </div>
-<div class="fileUpload btn btn-primary">
-    <span>Upload Image</span>
-    <input type="file" name="image" class="upload" />
-</div>
-    <br>
-    <br>
-    <button type="submit" class="btn btn-info btn-lg" value="Submit">Submit</button>
-    </form>
+ <br>
+    <div class="card">
 
+      <h5 class="card-header info-color text-white text-center bg-info py-4">
+          <strong>Add Project</strong>
+      </h5>
+  
+      <!--Card content-->
+      <div class="card-body px-lg-5">
+  
+          <!-- Form -->
+          <form method="post" enctype="multipart/form-data" class="text-center" style="color: #757575;">
+            {% csrf_token %}
+              <p>Let others know what you're working on.</p>
+  
+              <p>
+                  <a href="/projects" target="_blank">See existing projects</a>
+              </p>
+  
+              <!-- Name -->
+              <div class="md-form mt-3">
+                  <input type="text" id="title" name="title" placeholder="Title" class="form-control">
+                  <label for="title"></label>
+              </div>
+  
+              <!-- E-mai -->
+              <div class="md-form">
+                  <input type="description" name="description" id="description" placeholder="Description" class="form-control">
+                  <label for="description"></label>
+              </div>
+
+              <div class="md-form">
+                <input type="technology" name="technology" id="technology" placeholder="Technology" class="form-control">
+                <label for="technology"></label>
+              </div>
+            <div class="fileUpload btn btn-primary">
+              <span>Upload Image</span>
+              <input type="file" name="image" class="upload" />
+            </div>
+  
+              <!-- Sign in button -->
+              <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Submit</button>
+  
+          </form>
+          <!-- Form -->
+  
+      </div>
+  
+  </div>
 {% endblock %}

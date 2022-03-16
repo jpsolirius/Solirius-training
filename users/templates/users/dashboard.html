@@ -8,10 +8,6 @@
     {% if user.is_authenticated %}
     Hi, {{ user.first_name|default:user.username }}!
         <h2>Account Details</h2>
-    {% else %} 
-        <a href="{% url 'login' %}">Login</a>
-        <br>
-        <a href="{% url 'signup' %}">Register</a>
     {% endif %}
     {% if user.username %}
         <div>Username: {{user.username}}</div>
