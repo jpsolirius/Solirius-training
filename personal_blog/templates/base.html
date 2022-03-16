@@ -1,7 +1,7 @@
 {% load active_link_tags %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
     <div class="container">
         <a class="navbar-brand" href="{% url 'project_index' %}">Tech Blog</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,14 +11,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item {% active_link 'project_index' 'active' %}">
-                    <a class="nav-link" href="{% url 'project_index' %}">Home</a>
+                    <a class="nav-link" href="{% url 'project_index' %}">Projects</a>
                 </li>
                 <li class="nav-item {% active_link 'blog_index' 'active' %}">
                     <a class="nav-link" href="{% url 'blog_index' %}">Forum</a>
                 </li>
+                {% if user.is_authenticated %}
                 <li class="nav-item {% active_link 'dashboard' 'active' %}">
                     <a class="nav-link" href="{% url 'dashboard' %}">Account</a>
                 </li>
+                {% else %}
+                <li class="nav-item {% active_link 'dashboard/login_user' 'active' %}">
+                    <a class="nav-link" href="/dashboard/login_user">Sign In</a>
+                </li>
+                <li class="nav-item {% active_link 'dashboard/signup' 'active' %}">
+                    <a class="nav-link" href="/dashboard/signup">Sign Up</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>
@@ -28,4 +37,9 @@
     {% block page_content %}{% endblock %}
 </div>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<style>
+.navbar-custom {
+    background-color: #006699;
+}
+</style>
