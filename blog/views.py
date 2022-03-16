@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from blog.forms import CommentForm
-from blog.models import Post, Comment
+from blog.forms import CommentForm, BlogPostForm
+from blog.models import Post, Comment, Category
 
 # Create your views here.
 
@@ -43,4 +43,14 @@ def blog_detail(request, pk):
         "form": form,
     }
     return render(request, "blog_detail.html", context)
+
+def create_blog_post(request):
+    category = Category.objects.all()
+    if request.method == 'POST':
+        form = BlogPostForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = BlogPostForm()
+    return render(request, 'create_blog_post.html', {'form':form, 'category':category})
 

@@ -17,25 +17,6 @@ def project_detail(request, pk):
     }
     return render(request, 'project_detail.html', context)
 
-""" def create_project(request, pk):
-    project = Project.objects.get(pk=pk)
-    form = ProjectForm()
-    if request.method == 'POST':
-        form = ProjectForm(request.POST)
-        if form.is_valid():
-            project = Project(
-                title=form.cleaned_data["title"],
-                description=form.cleaned_data["description"],
-                technology=form.cleaned_data["technology"],
-            )
-            project.save()
-    projects = Project.objects.filter(title=title)
-    context = {
-        'projects': projects,
-        'form': form
-    }
-    return render(request, "project_form.html", context) 
- """
 def create_project(request):
     if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES)

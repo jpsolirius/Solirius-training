@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block page_content %}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<h1>Add Blog Post</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <label><strong>Title</strong></label>
+    <div class="form-group">
+        {{ form.title }}
+    </div>
+    <label><strong>Description</strong></label>
+    <div class="form-group">
+        {{ form.body }}    
+    </div>
+    <label><strong>Categories</strong></label>
+    <div class="form-group">
+        <hr>
+        {{ form.categories }}
+    </div> 
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}

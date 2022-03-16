@@ -1,4 +1,5 @@
 from django import forms
+from blog.models import Post, Category
 
 class CommentForm(forms.Form):
     author = forms.CharField(
@@ -17,3 +18,15 @@ class CommentForm(forms.Form):
         })
     )
 
+class CustomMMCF(forms.ModelMultipleChoiceField):
+    def label_from_instance(self, member):
+        return "%s" % member.name
+
+class BlogPostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('title', 'body', 'categories')
+    categories = CustomMMCF(
+        queryset=Category.objects.all(),
+        widget=forms.CheckboxSelectMultiple
+    )
