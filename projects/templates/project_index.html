@@ -9,7 +9,7 @@
 <section class="jumbotron text-center">
     <div class="container">
       <h1 class="jumbotron-heading">Projects <i class="fa fa-book"></i></h1>
-      <p class="lead text-muted">See what projects others are working on. Add them to your favourites. Share your projects with the world. </p>
+      <p class="lead text-muted">Keep up to date with other people's projects. Add them to your favourites. Share your projects with the world. </p>
       <p>
         <a class="btn btn-primary" href="{% url 'new_project'%}" >Add a project</a>
         <a href="#" class="btn btn-secondary my-2">My Favourites</a>
@@ -20,8 +20,9 @@
     <div class="col-md-6 px-0">
       <h1 class="display-4 font-italic">Building a chess app with flutter</h1>
       <p class="lead my-3">Flutter is a UI toolkit made by Google for developing cross-platform apps. It's a free and open-source toolkit to build visually attractive apps.</p>
-      <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
-    </div>
+      <p class="lead mb-0"><a href="{% url 'featured_project' %}" class="text-white font-weight-bold">Continue reading...</a></p>
+  </div>
+  <!-- <img class="img-fluid float-right" style="width:300px;  " src="img/chess.jpeg"> -->
   </div>
   <div class="album py-5 bg-info">
   <main class="my-5">

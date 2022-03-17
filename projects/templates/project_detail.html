@@ -1,7 +1,7 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block page_content %} 
-<h1>{{ project.title }}</h1>
+<!-- <h1>{{ project.title }}</h1>
 <div class="row">
     <div class="col-md-8">
         <img src="/projects/{{project.image}}" alt="" width="100%">
@@ -15,8 +15,34 @@
         <a href="{% url 'edit_project' project.pk %}" class='btn btn-secondary'>Edit</a>
         <a href="{% url 'delete_project' project.pk %}" class='btn btn-danger'>Delete</a>
     </div>
-</div>
+</div> -->
 
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+                <header class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1">{{ project.title }}</h1>
+                    <!-- Post meta content-->
+                    <div class="text-muted fst-italic mb-2">Posted on {{ project.created_on}} by {{user.first_name}} {{user.last_name}}</div>
+                    <!-- Post categories-->
+                    {% for tech in project.technologies.all %}
+                    <a class="badge bg-secondary text-decoration-none link-light" style='color: white' href="#!"> {{tech.name}} </a>
+                    {% endfor %}
+                </header>
+                <!-- Preview image figure-->
+                <figure class="mb-4"><img class="img-fluid rounded" src="/projects/{{project.image}}" alt="..." /></figure>
+                <!-- Post content-->
+                <section class="mb-5">
+                    <p class="fs-5 mb-4">{{project.description}}</p>
+                    
+                </section>
+            </article>
+            <a href="{% url 'edit_project' project.pk %}" class='btn btn-secondary'>Edit</a>
+            <a href="{% url 'delete_project' project.pk %}" class='btn btn-danger'>Delete</a>
 {% endblock %}
 
 

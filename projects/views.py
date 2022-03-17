@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from projects.forms import ProjectForm
-from projects.models import Project
+from projects.models import Project, Technology
+from django.template import loader
+from django.http import HttpResponse
 
 def project_index(request):
     projects = Project.objects.all()
@@ -12,8 +14,10 @@ def project_index(request):
 
 def project_detail(request, pk):
     project = Project.objects.get(pk=pk)
+    technology = Technology.objects.all()
     context = {
-        'project': project
+        'project': project,
+        'technology': technology
     }
     return render(request, 'project_detail.html', context)
 
@@ -49,3 +53,7 @@ def delete_project(request, pk):
         return redirect('/projects')
     context = {'item': project}
     return render(request, 'delete_project.html', context)
+
+def featured_project(self):
+    response_body = loader.get_template('featured_project.html').render()
+    return HttpResponse(response_body)

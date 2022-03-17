@@ -29,4 +29,4 @@ class BlogPostForm(forms.ModelForm):
     categories = CustomMMCF(
         queryset=Category.objects.all(),
         widget=forms.CheckboxSelectMultiple
-    )
+        )

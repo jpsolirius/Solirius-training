@@ -23,22 +23,29 @@
                   <a href="/projects" target="_blank">See existing projects</a>
               </p>
   
-              <!-- Name -->
               <div class="md-form mt-3">
                   <input type="text" id="title" name="title" placeholder="Title" class="form-control">
                   <label for="title"></label>
               </div>
   
-              <!-- E-mai -->
               <div class="md-form">
                   <input type="description" name="description" id="description" placeholder="Description" class="form-control">
                   <label for="description"></label>
               </div>
 
-              <div class="md-form">
+              <!-- <div class="md-form">
                 <input type="technology" name="technology" id="technology" placeholder="Technology" class="form-control">
                 <label for="technology"></label>
-              </div>
+              </div> -->
+              <br>
+              <label><strong>Technology</strong></label>
+        <hr>
+              <div class="form-group">
+                {% for technology in form.technologies%}
+                {{ technology }}
+                {% endfor %}
+              <div>
+                <br>
             <div class="fileUpload btn btn-primary">
               <span>Upload Image</span>
               <input type="file" name="image" class="upload" />
