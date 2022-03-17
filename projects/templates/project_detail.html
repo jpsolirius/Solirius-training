@@ -27,7 +27,7 @@
                     <!-- Post title-->
                     <h1 class="fw-bolder mb-1">{{ project.title }}</h1>
                     <!-- Post meta content-->
-                    <div class="text-muted fst-italic mb-2">Posted on {{ project.created_on}} by {{user.first_name}} {{user.last_name}}</div>
+                    <div class="text-muted fst-italic mb-2">Posted on {{ project.created_on}} by {{project.created_by.first_name}} {{project.created_by.last_name}}</div>
                     <!-- Post categories-->
                     {% for tech in project.technologies.all %}
                     <a class="badge bg-secondary text-decoration-none link-light" style='color: white' href="#!"> {{tech.name}} </a>

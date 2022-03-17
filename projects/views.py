@@ -3,6 +3,7 @@ from projects.forms import ProjectForm
 from projects.models import Project, Technology
 from django.template import loader
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 
 def project_index(request):
     projects = Project.objects.all()
@@ -25,6 +26,7 @@ def create_project(request):
     if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
+            form.instance.created_by = request.user
             form.save()
             return redirect('/projects/')
     else:
